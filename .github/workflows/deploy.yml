@@ -7,7 +7,7 @@ env:
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: us-central1-c   # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
-  REGISTRY_URL: gcr.io/{$PROJECT_ID}
+  REGISTRY_URL: gcr.io/${PROJECT_ID}
 
 jobs:
   setup-build-publish-deploy:
