@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+<suppress checks="ClassDataAbstractionCoupling" files="(DatagenTask|AvroMessageReader|RestService|Errors|SchemaRegistryRestApplication|KafkaSchemaRegistry|KafkaStore|AvroData|KafkaGroupMasterElector).java"/>
+  <suppress checks="(CyclomaticComplexity|NPathComplexity)" files="DatagenTask.java"/>
+</suppressions>

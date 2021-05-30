@@ -1,0 +1,6 @@
+FROM adoptopenjdk/openjdk8:alpine-slim
+RUN apk --no-cache add curl
+LABEL maintainer="prohan@whiteklay.in"
+ARG JAR_FILE=target/metrics-1.0-SNAPSHOT.jar
+ADD ${JAR_FILE} metrics.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/metrics.jar"]

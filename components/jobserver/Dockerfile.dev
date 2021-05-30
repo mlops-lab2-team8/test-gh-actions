@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+LABEL maintainer="prohan@whiteklay.in"
+ARG JAR_FILE=target/JobServer-1.0-SNAPSHOT.jar
+ADD ${JAR_FILE} JobServer.jar
+ENTRYPOINT ["java","-jar","/JobServer.jar"]

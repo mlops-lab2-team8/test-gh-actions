@@ -7,7 +7,7 @@ env:
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: us-central1-c   # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
-  IMAGE: static-site
+  REGISTRY_URL: gcr.io/$PROJECT_ID
 
 jobs:
   setup-build-publish-deploy:
@@ -36,6 +36,11 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
     # Build the Docker image
-    - name: Test
+    - name: Build
       run: |-
-        kubectl apply -f https://gist.githubusercontent.com/tcdowney/b8a0297241b74f94ef1fc6627f7ea69a/raw/eaae035f5adca37ca00d4a49f1c1958fe3db89e3/ubuntu-sleep.yaml
+        docker build  -f ./components/kafka-connect/Dockerfile -t ${REGISTRY_URL}/kafka-connect:${GIT_SHA} -t ${REGISTRY_URL}/kafka-connect:latest components/kafka-connect
+
+    # Push the Docker image to Google Container Registry
+    - name: Publish
+      run: |-
+        docker push ${REGISTRY_URL}/kafka-connect:${GIT_SHA}

@@ -1,0 +1,131 @@
+{"name": "elab_raw2",
+"config": {
+"connector.class":"com.github.mmolimar.kafka.connect.fs.FsSourceConnector",
+"tasks.max":"1",
+"fs.uris":"s3a://elab/",
+"policy.fs.fs.s3a.access.key":"minio",
+"policy.fs.fs.s3a.secret.key":"minio123",
+"topic":"elab_raw2",
+"policy.class":"com.github.mmolimar.kafka.connect.fs.policy.SimplePolicy",
+"policy.fs.fs.s3a.endpoint":"http://34.122.3.223:31727",
+"policy.recursive":"false",
+"policy.regexp":".*csv",
+"policy.batch_size":0,
+"policy.cleanup":"none",
+"file_reader.class":"com.github.mmolimar.kafka.connect.fs.file.reader.CsvFileReader",
+"file_reader.delimited.settings.format.delimiter" : ",",
+"file_reader.delimited.settings.header" :true,
+"file_reader.batch_size":0,
+"file_reader.delimited.settings.null_value": "null",
+"file_reader.delimited.settings.empty_value": "null",
+"value.converter": "io.confluent.connect.protobuf.ProtobufConverter",
+"value.converter.schema.registry.url": "http://izac-cp-schema-registry:8081",
+"value.converter.schemas.enable":true,
+"key.converter": "io.confluent.connect.protobuf.ProtobufConverter",
+"key.converter.schema.registry.url": "http://izac-cp-schema-registry:8081",
+"key.converter.schemas.enable":true
+}}
+
+
+{"name": "elab_raw2",
+"config": {
+"connector.class":"com.github.mmolimar.kafka.connect.fs.FsSourceConnector",
+"tasks.max":"1",
+"fs.uris":"s3a://elab/",
+"policy.fs.fs.s3a.access.key":"minio",
+"policy.fs.fs.s3a.secret.key":"minio123",
+"topic":"elab_raw2",
+"policy.class":"com.github.mmolimar.kafka.connect.fs.policy.SimplePolicy",
+"policy.fs.fs.s3a.endpoint":"http://10.10.10.33:32727",
+"policy.recursive":"false",
+"policy.regexp":".*csv",
+"policy.batch_size":0,
+"policy.cleanup":"none",
+"file_reader.class":"com.github.mmolimar.kafka.connect.fs.file.reader.CsvFileReader",
+"file_reader.delimited.settings.format.delimiter" : ",",
+"file_reader.delimited.settings.header" :true,
+"file_reader.batch_size":0,
+"file_reader.delimited.settings.null_value": "null",
+"file_reader.delimited.settings.empty_value": "null",
+"value.converter": "io.confluent.connect.avro.AvroConverter",
+"value.converter.schema.registry.url": "http://izac-cp-schema-registry:8081",
+"value.converter.schemas.enable":true,
+"key.converter": "io.confluent.connect.avro.AvroConverter",
+"key.converter.schema.registry.url": "http://izac-cp-schema-registry:8081",
+"key.converter.schemas.enable":true
+}}
+
+
+{
+  "name": "s3_sink6",
+  "config": {
+    "connector.class": "io.confluent.connect.s3.S3SinkConnector",
+    "topics": "datagen_ecom_test_output2",
+    "s3.region": "us-east-1",
+    "s3.bucket.name": "kafka-sink2",
+    "s3.part.size": "5242880",
+    "flush.size": "100",
+    "store.url": "http://10.8.0.222:80",
+    "aws.access.key.id": "minio",
+    "aws.secret.access.key": "minio123",
+    "storage.class": "io.confluent.connect.s3.storage.S3Storage",
+    "format.class": "io.confluent.connect.s3.format.parquet.ParquetFormat",
+    "schema.generator.class": "io.confluent.connect.storage.hive.schema.DefaultSchemaGenerator",
+    "partitioner.class": "io.confluent.connect.storage.partitioner.DefaultPartitioner",
+    "schema.compatibility": "NONE"
+  }
+}
+
+
+{
+  "name": "s3_sink8",
+  "config": {
+    "connector.class": "io.confluent.connect.s3.S3SinkConnector",
+    "topics": "datagen_ecom_test_output2",
+    "s3.region": "us-east-1",
+    "s3.bucket.name": "kafka-sink2",
+    "s3.part.size": "5242880",
+    "flush.size": "100",
+    "store.url": "http://10.8.0.222:80",
+    "aws.access.key.id": "minio",
+    "aws.secret.access.key": "minio123",
+    "storage.class": "io.confluent.connect.s3.storage.S3Storage",
+    "format.class": "io.confluent.connect.s3.format.parquet.ParquetFormat",
+    "schema.generator.class": "io.confluent.connect.storage.hive.schema.DefaultSchemaGenerator",
+    "partitioner.class": "io.confluent.connect.storage.partitioner.DefaultPartitioner",
+    "schema.compatibility": "NONE",
+    "transforms": "timestamp",
+"transforms.timestamp.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+"transforms.timestamp.format": "yyyy-MM-dd HH:mm:ss",
+"transforms.timestamp.target.type": "Timestamp",
+"transforms.timestamp.field": "InvoiceDate",
+"time.precision.mode": "connect"
+
+  }
+}
+
+
+{
+  "name": "s3_sink2",
+  "config": {
+    "connector.class": "io.confluent.connect.s3.S3SinkConnector",
+    "topics": "datagen_ecom_test_output",
+    "s3.region": "us-east-1",
+    "s3.bucket.name": "kafka-sink2",
+    "s3.part.size": "5242880",
+    "flush.size": "100",
+    "store.url": "http://10.8.0.222:80",
+    "aws.access.key.id": "minio",
+    "aws.secret.access.key": "minio123",
+    "storage.class": "io.confluent.connect.s3.storage.S3Storage",
+    "format.class": "io.confluent.connect.s3.format.parquet.ParquetFormat",
+    "schema.generator.class": "io.confluent.connect.storage.hive.schema.DefaultSchemaGenerator",
+    "partitioner.class": "io.confluent.connect.storage.partitioner.TimeBasedPartitioner",
+    "partition.duration.ms": 10000,
+    "timestamp.extractor": "RecordField",
+    "timestamp.field": "InvoiceDate",
+    "schema.compatibility": "NONE",
+  }
+}
+
+

@@ -1,0 +1,98 @@
+{
+  "type": "record",
+  "name": "CustomerPrediction",
+  "namespace": "community.mlops",
+  "fields": [
+    {
+      "name": "InvoiceNo",
+      "type": "long"
+    },
+    {
+      "name": "InvoiceDate",
+      "type": {
+        "logicalType": "timestamp-millis",
+        "type": "long"
+      }
+    },
+    {
+      "name": "Quantity",
+      "type": "long"
+    },
+    {
+      "name": "UnitPrice",
+      "type": "long"
+    },
+    {
+      "name": "Description",
+      "type": "string"
+    },
+    {
+      "name": "CustomerID",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "type": "string"
+    },
+    {
+      "name": "currentTs",
+      "type": "long"
+    },
+    {
+      "name": "Count",
+      "type": "long"
+    },
+    {
+      "name": "Min",
+      "type": "double"
+    },
+    {
+      "name": "Max",
+      "type": "double"
+    },
+    {
+      "name": "Mean",
+      "type": "double"
+    },
+    {
+      "name": "Sum",
+      "type": "double"
+    },
+    {
+      "name": "categ_0",
+      "type": "double"
+    },
+    {
+      "name": "categ_1",
+      "type": "double"
+    },
+    {
+      "name": "categ_2",
+      "type": "double"
+    },
+    {
+      "name": "categ_3",
+      "type": "double"
+    },
+    {
+      "name": "categ_4",
+      "type": "double"
+    },
+    {
+      "name": "QuantityCanceled",
+      "type": "int"
+    },
+    {
+      "name": "Churn",
+      "type": "int"
+    },
+    {
+      "name": "prediction",
+      "type": "double"
+    },
+    {
+      "name": "predictionTs",
+      "type": "long"
+    }
+  ]
+}

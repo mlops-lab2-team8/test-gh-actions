@@ -1,0 +1,20 @@
+syntax = "proto3";
+package community.mlops;
+
+//import "google/protobuf/timestamp.proto";
+import "timestamp.proto";
+
+message EcomFeaturesProtobuf {
+    string customer_id = 1;
+    int64 count = 2;
+    google.protobuf.Timestamp invoice_date = 3;
+    double min = 4;
+    double max = 5;
+    double mean = 6;
+    double sum = 7;
+    double categ_0 = 8;
+    double categ_1 = 9;
+    double categ_2 = 10;
+    double categ_3 = 11;
+    double categ_4 = 12;
+}

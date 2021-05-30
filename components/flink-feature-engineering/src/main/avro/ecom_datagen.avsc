@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "EcomDatagen",
+  "namespace": "community.mlops",
+  "fields": [
+    {
+      "name": "InvoiceNo",
+      "type": "long"
+    },
+    {
+      "name": "InvoiceDate",
+      "type": "long"
+    },
+    {
+      "name": "Quantity",
+      "type": "long"
+    },
+    {
+      "name": "UnitPrice",
+      "type": "long"
+    },
+    {
+      "name": "Description",
+      "type": "string"
+    },
+    {
+      "name": "CustomerID",
+      "type": "string"
+    },
+    {
+      "name": "Country",
+      "type": "string"
+    },
+    {
+      "name": "currentTs",
+      "type": "long"
+    }
+  ]
+}
