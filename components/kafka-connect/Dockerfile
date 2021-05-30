@@ -1,7 +1,7 @@
 FROM adoptopenjdk/openjdk8:alpine-slim as datagen
 RUN apk --no-cache add curl
 RUN apk add maven
-COPY . ./app
+COPY kafka-connect-datagen ./app
 RUN mvn clean package -f app/pom.xml
 
 
